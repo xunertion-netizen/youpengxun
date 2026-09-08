@@ -1,0 +1,152 @@
+/* ============================================================
+   有朋迅 · 暖奶白 + 森林绿 + 青柠 设计系统
+   YOUPENGXUN — Relay-inspired: cream / forest green / lime
+   ============================================================ */
+
+:root {
+  /* ---- 暖奶白基底 base ---- */
+  --white:   #ffffff;   /* 纯白卡片 */
+  --cream:   #fffef7;   /* 主背景 暖奶白 */
+  --paper:   #f6f1e3;   /* 暖砂分区 */
+  --stone:   #efe8d6;   /* 更深暖砂 */
+  --mist:    #eef0e2;   /* 淡绿调中性块 */
+  --line:    #e7e0cd;   /* 暖色细线 */
+  --line-2:  #d8cfb5;
+
+  /* ---- 墨 ink (深绿墨调) ---- */
+  --ink:     #0c2417;   /* 主标题 近黑森林绿 */
+  --ink-2:   #2c4438;   /* 正文 */
+  --ink-3:   #5b6f63;   /* 次要 */
+  --muted:   #93a092;   /* 弱化 */
+
+  /* ---- 森林绿 primary + 青柠 accent ---- */
+  --blue-50:  #eef3ea;   /* 极浅绿(图标底/chips) */
+  --blue-100: #dde7d2;   /* 浅绿 */
+  --blue-300: #8fae8a;   /* 中绿 */
+  --blue:     #004822;   /* 主色 — 森林绿 */
+  --blue-600: #00381b;
+  --blue-700: #002a14;
+  --blue-ink: #06301a;
+  --navy:     #013319;   /* 深色版面 森林绿 */
+  --lime:     #d5e27b;   /* 青柠点睛 */
+  --lime-deep:#c4d35f;   /* 深青柠(hover/边) */
+  --olive:    #5a530c;   /* 古铜橄榄 辅助 */
+
+  /* ---- 高亮 (青柠 marker) ---- */
+  --iris-grad: linear-gradient(100deg, #e6efb6 0%, #d5e27b 45%, #c4d35f 70%, #e6efb6 100%);
+  --iris-text: var(--blue);
+
+  /* ---- 几何 ---- */
+  --r-sm: 10px;
+  --r:    16px;
+  --r-lg: 24px;
+  --r-xl: 34px;
+  --maxw: 1240px;
+  --gutter: clamp(20px, 5vw, 64px);
+
+  /* ---- 阴影 (暖调、克制) ---- */
+  --sh-1: 0 1px 2px rgba(12,36,23,.04), 0 1px 3px rgba(12,36,23,.05);
+  --sh-2: 0 10px 30px -12px rgba(12,36,23,.14), 0 2px 6px rgba(12,36,23,.05);
+  --sh-3: 0 34px 70px -26px rgba(12,36,23,.24), 0 10px 24px -14px rgba(12,36,23,.12);
+  --sh-blue: 0 14px 32px -14px rgba(0,72,34,.30);
+
+  /* ---- 字体 ---- */
+  --serif: "Bricolage Grotesque", "Noto Sans SC", system-ui, sans-serif;
+  --sans:  "Hanken Grotesk", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --ease-soft: cubic-bezier(.4, 0, .2, 1);
+}
+
+/* ---------- reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--ink-2);
+  background: var(--cream);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+::selection { background: var(--lime); color: var(--blue-700); }
+
+/* ---------- layout helpers ---------- */
+.wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+.eyebrow {
+  font-size: 12.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--blue-600); display: inline-flex; align-items: center; gap: 10px;
+}
+.eyebrow::before {
+  content: ""; width: 26px; height: 1.5px; background: var(--blue); display: inline-block;
+}
+.eyebrow.center::before { display: none; }
+
+/* iridescent helpers */
+/* emphasis word — lime marker highlight (Relay signature) */
+.iris-text {
+  color: var(--ink);
+  -webkit-text-fill-color: currentColor;
+  background: linear-gradient(transparent 58%, var(--lime) 58% 92%, transparent 92%);
+  padding: 0 .06em;
+}
+.iris-rule {
+  height: 1px; border: 0; border-radius: 2px;
+  background: var(--line-2);
+}
+@keyframes irisflow { to { background-position: 200% 0; } }
+
+/* section heading scale */
+.h-display {
+  font-family: var(--serif); font-weight: 700;
+  font-size: clamp(46px, 8vw, 104px); line-height: .98;
+  letter-spacing: -.02em; color: var(--ink);
+}
+.h-1 {
+  font-family: var(--serif); font-weight: 700;
+  font-size: clamp(34px, 5vw, 58px); line-height: 1.04;
+  letter-spacing: -.02em; color: var(--ink); margin: 0;
+}
+.h-2 {
+  font-family: var(--sans); font-weight: 700;
+  font-size: clamp(21px, 2.4vw, 27px); line-height: 1.25;
+  letter-spacing: -.01em; color: var(--ink); margin: 0;
+}
+.lead { font-size: clamp(17px, 1.5vw, 20px); color: var(--ink-3); line-height: 1.7; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 26px; border-radius: 999px; font-weight: 600; font-size: 15px;
+  border: 1px solid transparent; transition: transform .4s var(--ease), box-shadow .4s var(--ease), background .3s;
+  white-space: nowrap;
+}
+.btn .arr { transition: transform .4s var(--ease); }
+.btn:hover .arr { transform: translateX(4px); }
+.btn-primary { background: var(--blue); color: #fff; box-shadow: var(--sh-blue); }
+.btn-primary:hover { transform: translateY(-2px); background: var(--blue-600); }
+.btn-ghost { background: var(--white); color: var(--ink); border-color: var(--line-2); box-shadow: var(--sh-1); }
+.btn-ghost:hover { transform: translateY(-2px); border-color: var(--blue-300); box-shadow: var(--sh-2); }
+
+/* ---------- reveal animation (base = visible; animate only when JS opts in) ---------- */
+.reveal { opacity: 1; transform: none; }
+.has-anim .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.has-anim .reveal.in { opacity: 1; transform: none; }
+.has-anim .reveal[data-d="1"] { transition-delay: .08s; }
+.has-anim .reveal[data-d="2"] { transition-delay: .16s; }
+.has-anim .reveal[data-d="3"] { transition-delay: .24s; }
+.has-anim .reveal[data-d="4"] { transition-delay: .32s; }
+.has-anim .reveal[data-d="5"] { transition-delay: .40s; }
+@media print {
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .has-anim .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+  * { animation: none !important; }
+}
